@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Experiencia educativa interactiva sobre la Cuenca Neuquina, Vaca Muerta y el desarrollo no convencional.">
+<link rel="icon" href="favicon.png">
+<title>Cuenca Neuquina | Geología & Desarrollo No Convencional</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="loader"><div class="loader-ring"></div><span>INICIALIZANDO MODELO GEOLÓGICO</span></div>
+
+<header class="nav">
+  <a class="brand" href="#inicio"><img src="favicon.png"><span><b>CUENCA NEUQUINA</b><small>GEOLOGÍA · ENERGÍA · INGENIERÍA</small></span></a>
+  <nav id="nav">
+    <a href="#cuenca">Cuenca</a><a href="#geologia">Geología</a><a href="#vaca">Vaca Muerta</a>
+    <a href="#pozo">Pozo</a><a href="#datos">Datos</a><a href="#quiz">Quiz</a>
+  </nav>
+  <button class="nav-btn" id="presentation">Modo presentación</button>
+  <button class="menu" id="menu">☰</button>
+</header>
+
+<main>
+<section class="hero" id="inicio">
+  <div class="hero-bg"></div><div class="grid"></div><div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="eyebrow">PROYECTO ACADÉMICO · PETRÓLEO Y GAS · 2026</div>
+    <h1>CUENCA<br><span>NEUQUINA</span></h1>
+    <p class="hero-lead">Del mar jurásico al desarrollo shale: una experiencia interactiva para entender la geología, el sistema petrolero y la ingeniería detrás de Vaca Muerta.</p>
+    <div class="actions"><a class="btn primary" href="#cuenca">Explorar la cuenca ↓</a><a class="btn ghost" href="#datos">Ver datos 2026</a></div>
+    <div class="chips"><span>Geología</span><span>Shale oil & gas</span><span>Perforación horizontal</span><span>Fractura hidráulica</span></div>
+  </div>
+  <div class="hero-stats">
+    <div><b>30.170</b><span>MMbbl · recursos técnicamente recuperables*</span></div>
+    <div><b>643,1</b><span>kbbl/d · petróleo Vaca Muerta · jul. 2026*</span></div>
+    <div><b>96,5</b><span>MMm³/d · gas Vaca Muerta · jul. 2026*</span></div>
+  </div>
+  <div class="scroll">DESPLAZÁ PARA COMENZAR <i>↓</i></div>
+</section>
+
+<section class="section" id="cuenca">
+  <div class="section-head">
+    <div class="kicker">01 · CONTEXTO REGIONAL</div>
+    <h2>Una cuenca sedimentaria que <em>concentra millones de años</em> de historia.</h2>
+    <p>La Cuenca Neuquina es una gran cuenca sedimentaria de la región centro-oeste de Argentina. Su evolución tectónica y sedimentaria generó sistemas petroleros convencionales y no convencionales.</p>
+  </div>
+  <div class="context-grid">
+    <div class="facts">
+      <article><span class="num">01</span><h3>Extensión regional</h3><p>Comprende sectores de Neuquén, Mendoza, Río Negro y La Pampa.</p></article>
+      <article><span class="num">02</span><h3>Ambiente marino</h3><p>Durante el Jurásico tardío se desarrollaron ambientes marinos favorables a la preservación de materia orgánica.</p></article>
+      <article><span class="num">03</span><h3>Sistema petrolero</h3><p>La arquitectura geológica permite estudiar generación, almacenamiento, migración y producción de hidrocarburos.</p></article>
+      <article><span class="num">04</span><h3>Escala industrial</h3><p>El desarrollo no convencional convirtió a la región en un núcleo estratégico de la energía argentina.</p></article>
+    </div>
+    <div class="map-wrap">
+      <div class="map-label"><small>MAPA INTERACTIVO</small><b>Cuenca Neuquina · esquema educativo</b></div>
+      <div id="map"></div>
+      <div class="map-controls"><button data-view="basin" class="active">Cuenca</button><button data-view="vaca">Vaca Muerta</button><button id="sat">Satélite</button><button id="reset">Restablecer</button></div>
+      <div class="legend"><span><i class="basin-dot"></i> Cuenca · esquema</span><span><i class="vaca-dot"></i> Vaca Muerta · referencia</span><span><i class="point-dot"></i> nodos</span></div>
+    </div>
+  </div>
+  <div class="note">⚠ Los polígonos de este mapa son <b>esquemáticos y educativos</b>; no sustituyen cartografía geológica oficial ni límites de concesiones.</div>
+</section>
+
+<section class="dark section" id="geologia">
+  <div class="section-head">
+    <div class="kicker">02 · EVOLUCIÓN DEL SUBSUELO</div>
+    <h2>De la sedimentación a la <em>ventana de hidrocarburos.</em></h2>
+    <p>La historia geológica explica por qué una roca puede convertirse en generadora y cómo el enterramiento, la temperatura y el tiempo modifican la materia orgánica.</p>
+  </div>
+  <div class="timeline" id="timeline">
+    <button class="active" data-stage="tri">TRIÁSICO–JURÁSICO</button>
+    <button data-stage="tit">TITHONIANO</button><button data-stage="ber">BERRIASIANO</button>
+    <button data-stage="val">VALANGINIANO</button><button data-stage="hoy">ACTUALIDAD</button>
+  </div>
+  <div class="geo-panel">
+    <div class="geo-scene" id="geoScene">
+      <div class="depth">SUPERFICIE<br><br>500 m<br><br>1.500 m<br><br>2.500 m<br><br>3.500 m</div>
+      <div class="surface">SUPERFICIE · SEDIMENTOS MÁS JÓVENES</div>
+      <div class="strata upper"></div><div class="strata vm"><span>FORMACIÓN VACA MUERTA</span><small>roca generadora / shale</small></div><div class="strata deep"></div>
+      <div class="well"><i></i><b></b></div>
+      <div class="fractures" id="fractures"></div>
+      <div class="hud">CORTE CONCEPTUAL · NO A ESCALA</div>
+    </div>
+    <div class="geo-copy"><span class="pill" id="stagePill">TRIÁSICO–JURÁSICO</span><h3 id="stageTitle">Se construye el espacio de la cuenca</h3><p id="stageText">La tectónica y la subsidencia generan espacio de acomodación donde se acumulan sedimentos a lo largo del tiempo geológico.</p>
+      <div class="mini-facts"><div><b id="age">≈ 250–145 Ma</b><span>intervalo de referencia</span></div><div><b id="event">Evolución tectónica</b><span>proceso dominante</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="vaca">
+  <div class="section-head"><div class="kicker">03 · FORMACIÓN VACA MUERTA</div><h2>Importante: Vaca Muerta <em>no es un yacimiento.</em></h2><p>Es una formación sedimentaria depositada en un ambiente marino jurásico dentro de la Cuenca Neuquina. Su relevancia actual se relaciona con su potencial como recurso no convencional.</p></div>
+  <div class="system">
+    <div class="system-diagram">
+      <div class="flow"><span>Materia orgánica</span><i>→</i><span>Enterramiento</span><i>→</i><span>Madurez térmica</span><i>→</i><span>Hidrocarburos</span></div>
+      <div class="rock"><div class="organic">● ● ● ● ● ● ●</div><strong>VACA MUERTA</strong><small>Roca fina · rica en materia orgánica · muy baja permeabilidad</small><div class="pores">••••••••••••••••••••</div></div>
+      <div class="callouts"><span><b>TOC</b>Materia orgánica</span><span><b>Ro</b>Madurez</span><span><b>k</b>Permeabilidad</span><span><b>φ</b>Porosidad</span></div>
+    </div>
+    <div class="system-copy">
+      <article><b>01 · Generación</b><p>La materia orgánica preservada puede transformarse térmicamente y generar hidrocarburos durante el enterramiento.</p></article>
+      <article><b>02 · Almacenamiento</b><p>Los hidrocarburos permanecen en una matriz de muy baja permeabilidad y en sistemas de poros y microfracturas.</p></article>
+      <article><b>03 · Producción</b><p>El pozo horizontal y la estimulación hidráulica aumentan la superficie efectiva y la conectividad hacia el pozo.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="dark section" id="pozo">
+  <div class="section-head"><div class="kicker">04 · INGENIERÍA DEL POZO</div><h2>¿Por qué perforar <em>horizontalmente?</em></h2><p>En una formación de muy baja permeabilidad, aumentar el contacto con la roca objetivo es fundamental. El desarrollo moderno combina trayectoria direccional, completación y estimulación.</p></div>
+  <div class="process">
+    <div class="process-nav" id="processNav">
+      <button class="active" data-step="0"><b>01</b>Perforación vertical</button>
+      <button data-step="1"><b>02</b>Construcción de curva</button>
+      <button data-step="2"><b>03</b>Lateral horizontal</button>
+      <button data-step="3"><b>04</b>Completación</button>
+      <button data-step="4"><b>05</b>Estimulación</button>
+      <button data-step="5"><b>06</b>Producción</button>
+    </div>
+    <div class="well-card">
+      <div class="well-model"><span class="surface-line"></span><span class="well-vertical"></span><span class="well-curve"></span><span class="well-horizontal" id="wellHorizontal"></span><div class="vm-band"></div><div class="fracs" id="fracs"></div><small>FORMACIÓN OBJETIVO</small></div>
+      <div class="process-info"><span id="processTag">ETAPA 01</span><h3 id="processTitle">Perforación vertical</h3><p id="processText"></p><div class="objective" id="processObjective"></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section simulator" id="simulador">
+  <div class="section-head"><div class="kicker">05 · LABORATORIO VIRTUAL</div><h2>Jugá con las variables y <em>entendé el concepto.</em></h2><p>Este modelo es didáctico: no calcula una producción real ni reemplaza un modelo de reservorio o simulación de ingeniería.</p></div>
+  <div class="sim-grid">
+    <div class="controls">
+      <label>Profundidad objetivo <output id="depthOut">2.500 m</output><input id="depth" type="range" min="1800" max="3800" value="2500" step="50"></label>
+      <label>Longitud lateral <output id="lengthOut">2.500 m</output><input id="length" type="range" min="500" max="3500" value="2500" step="100"></label>
+      <label>Etapas de fractura <output id="stageOut">30</output><input id="stages" type="range" min="5" max="40" value="30"></label>
+      <div class="score"><div><span>ÍNDICE CONCEPTUAL DE CONTACTO</span><b id="score">—</b></div><div class="bar"><i id="scoreBar"></i></div><p id="simText"></p></div>
+    </div>
+    <div class="sim-visual"><div class="sim-depth"></div><div class="sim-well"></div><div id="simFracs"></div><span class="sim-label">POZO HORIZONTAL</span><span class="sim-label vm-label">VACA MUERTA</span></div>
+  </div>
+</section>
+
+<section class="section metrics" id="datos">
+  <div class="section-head"><div class="kicker">06 · INDICADORES 2026</div><h2>La escala del desarrollo, <em>en números.</em></h2><p>Datos recientes de fuentes oficiales argentinas. Las cifras se muestran con su unidad original y fecha de referencia.</p></div>
+  <div class="metric-grid">
+    <article><span>RECURSOS DE PETRÓLEO</span><b>30.170</b><strong>MMbbl</strong><small>Recursos remanentes técnicamente recuperables estimados para Vaca Muerta.</small></article>
+    <article><span>PETRÓLEO · JUL 2026</span><b>643,1</b><strong>kbbl/d</strong><small>Producción de petróleo de Vaca Muerta; +26,4% interanual.</small></article>
+    <article><span>GAS · JUL 2026</span><b>96,5</b><strong>MMm³/d</strong><small>Producción de gas natural de Vaca Muerta; +5,9% interanual.</small></article>
+    <article><span>PRODUCCIÓN NACIONAL</span><b>916,2</b><strong>kbbl/d</strong><small>Producción argentina de petróleo en julio de 2026.</small></article>
+  </div>
+  <div class="sources">
+    <b>Fuentes principales</b>
+    <a href="https://www.argentina.gob.ar/noticias/vaca-muerta-aumento-en-un-89-sus-recursos-de-petroleo-respecto-de-las-ultimas-estimaciones" target="_blank">Secretaría de Energía · Recursos 2026 ↗</a>
+    <a href="https://www.argentina.gob.ar/noticias/la-produccion-de-petroleo-registro-otro-mes-de-crecimiento-en-julio" target="_blank">Secretaría de Energía · Producción julio 2026 ↗</a>
+    <a href="https://www.argentina.gob.ar/economia/energia/vaca-muerta/historia" target="_blank">Argentina.gob.ar · Historia de Vaca Muerta ↗</a>
+  </div>
+</section>
+
+<section class="section glossary" id="quiz">
+  <div class="section-head"><div class="kicker">07 · EVALUACIÓN</div><h2>¿Cuánto sabés de la <em>Cuenca Neuquina?</em></h2><p>Respondé y comprobá si dominás los conceptos principales.</p></div>
+  <div class="quiz">
+    <div class="quiz-top"><span id="qNumber">PREGUNTA 01 / 08</span><b id="scoreQuiz">0 pts</b></div>
+    <h3 id="question"></h3><div id="answers"></div><div class="quiz-bottom"><span id="result"></span><button id="next" disabled>Siguiente →</button></div>
+  </div>
+</section>
+
+<section class="section final">
+  <div class="final-card"><div class="kicker">CIERRE</div><h2>La geología explica el recurso.<br><em>La ingeniería lo convierte en energía.</em></h2><p>Una mirada integrada a la Cuenca Neuquina permite conectar tiempo geológico, propiedades de roca, perforación, completación, estimulación y producción.</p><a class="btn primary" href="#inicio">Volver al inicio ↑</a></div>
+</section>
+</main>
+
+<footer><div><b>CUENCA NEUQUINA</b><span>Proyecto académico · Petróleo y Gas</span></div><div>© <span id="year"></span> · David Mauna & equipo</div></footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
