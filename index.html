@@ -1,176 +1,1623 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Experiencia educativa interactiva sobre la Cuenca Neuquina, Vaca Muerta y el desarrollo no convencional.">
-<link rel="icon" href="favicon.png">
-<title>Cuenca Neuquina | Geología & Desarrollo No Convencional</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
-<div id="loader"><div class="loader-ring"></div><span>INICIALIZANDO MODELO GEOLÓGICO</span></div>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<header class="nav">
-  <a class="brand" href="#inicio"><img src="favicon.png"><span><b>CUENCA NEUQUINA</b><small>GEOLOGÍA · ENERGÍA · INGENIERÍA</small></span></a>
-  <nav id="nav">
-    <a href="#cuenca">Cuenca</a><a href="#geologia">Geología</a><a href="#vaca">Vaca Muerta</a>
-    <a href="#pozo">Pozo</a><a href="#datos">Datos</a><a href="#quiz">Quiz</a>
-  </nav>
-  <button class="nav-btn" id="presentation">Modo presentación</button>
-  <button class="menu" id="menu">☰</button>
+    <title>Cuenca Neuquina | No Convencional</title>
+
+    <meta name="description"
+        content="Proyecto académico sobre la Cuenca Neuquina, Vaca Muerta, sistemas no convencionales, perforación horizontal y fracturación hidráulica.">
+
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <!-- Fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Leaflet -->
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- =========================================================
+     PRELOADER
+========================================================= -->
+
+<div id="preloader">
+    <div class="loader">
+        <div class="loader-ring"></div>
+        <span>CUENCA NEUQUINA</span>
+    </div>
+</div>
+
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header class="header" id="header">
+
+    <div class="nav-container">
+
+        <a href="#inicio" class="logo">
+            <span class="logo-mark">CN</span>
+            <span>
+                <strong>CUENCA</strong>
+                <small>NEUQUINA</small>
+            </span>
+        </a>
+
+        <nav class="nav" id="mainNav">
+
+            <a href="#inicio">Inicio</a>
+
+            <a href="#cuenca">La Cuenca</a>
+
+            <a href="#geologia">Tiempo Geológico</a>
+
+            <a href="#sistema">Sistema Petrolero</a>
+
+            <a href="#vaca-muerta">Vaca Muerta</a>
+
+            <a href="#pozo">Desarrollo del Pozo</a>
+
+            <a href="#datos">Datos</a>
+
+            <a href="#ambiente">Seguridad</a>
+
+            <a href="#quiz">Quiz</a>
+
+            <a href="#glosario">Glosario</a>
+
+            <a href="#equipo">Equipo</a>
+
+        </nav>
+
+        <button class="presentation-btn" id="presentationBtn">
+            <span>▣</span>
+            Presentación
+        </button>
+
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+    </div>
+
 </header>
 
+
 <main>
-<section class="hero" id="inicio">
-  <div class="hero-bg"></div><div class="grid"></div><div class="hero-glow"></div>
-  <div class="hero-content">
-    <div class="eyebrow">PROYECTO ACADÉMICO · PETRÓLEO Y GAS · 2026</div>
-    <h1>CUENCA<br><span>NEUQUINA</span></h1>
-    <p class="hero-lead">Del mar jurásico al desarrollo shale: una experiencia interactiva para entender la geología, el sistema petrolero y la ingeniería detrás de Vaca Muerta.</p>
-    <div class="actions"><a class="btn primary" href="#cuenca">Explorar la cuenca ↓</a><a class="btn ghost" href="#datos">Ver datos 2026</a></div>
-    <div class="chips"><span>Geología</span><span>Shale oil & gas</span><span>Perforación horizontal</span><span>Fractura hidráulica</span></div>
-  </div>
-  <div class="hero-stats">
-    <div><b>30.170</b><span>MMbbl · recursos técnicamente recuperables*</span></div>
-    <div><b>643,1</b><span>kbbl/d · petróleo Vaca Muerta · jul. 2026*</span></div>
-    <div><b>96,5</b><span>MMm³/d · gas Vaca Muerta · jul. 2026*</span></div>
-  </div>
-  <div class="scroll">DESPLAZÁ PARA COMENZAR <i>↓</i></div>
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<section class="hero section-dark" id="inicio">
+
+    <div class="hero-background"></div>
+
+    <div class="hero-content">
+
+        <div class="hero-tag">
+            <span></span>
+            PROYECTO ACADÉMICO · PETRÓLEO Y GAS
+        </div>
+
+        <h1>
+            CUENCA
+            <span>NEUQUINA</span>
+        </h1>
+
+        <p class="hero-subtitle">
+            Del origen geológico al desarrollo de un pozo no convencional.
+        </p>
+
+        <p class="hero-description">
+            Un recorrido interactivo por la geología, el sistema petrolero,
+            Vaca Muerta y las tecnologías que permiten producir hidrocarburos
+            desde rocas de muy baja permeabilidad.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="#cuenca" class="btn btn-primary">
+                Explorar la cuenca
+                <span>→</span>
+            </a>
+
+            <a href="#pozo" class="btn btn-outline">
+                Ver desarrollo del pozo
+            </a>
+
+        </div>
+
+        <div class="hero-tags">
+            <span>Vaca Muerta</span>
+            <span>Shale</span>
+            <span>Pozo horizontal</span>
+            <span>Fracturación hidráulica</span>
+        </div>
+
+    </div>
+
+
+    <div class="hero-image">
+
+        <img src="Portada.png"
+             alt="Cuenca Neuquina y desarrollo hidrocarburífero"
+             loading="eager">
+
+        <div class="hero-image-overlay"></div>
+
+    </div>
+
+
+    <div class="hero-stats">
+
+        <div class="hero-stat">
+            <strong>4</strong>
+            <span>provincias<br>involucradas</span>
+        </div>
+
+        <div class="hero-stat">
+            <strong>Shale</strong>
+            <span>recurso<br>no convencional</span>
+        </div>
+
+        <div class="hero-stat">
+            <strong>+3 km</strong>
+            <span>laterales<br>horizontales</span>
+        </div>
+
+        <div class="hero-stat">
+            <strong>24/7</strong>
+            <span>producción<br>industrial</span>
+        </div>
+
+    </div>
+
 </section>
 
-<section class="section" id="cuenca">
-  <div class="section-head">
-    <div class="kicker">01 · CONTEXTO REGIONAL</div>
-    <h2>Una cuenca sedimentaria que <em>concentra millones de años</em> de historia.</h2>
-    <p>La Cuenca Neuquina es una gran cuenca sedimentaria de la región centro-oeste de Argentina. Su evolución tectónica y sedimentaria generó sistemas petroleros convencionales y no convencionales.</p>
-  </div>
-  <div class="context-grid">
-    <div class="facts">
-      <article><span class="num">01</span><h3>Extensión regional</h3><p>Comprende sectores de Neuquén, Mendoza, Río Negro y La Pampa.</p></article>
-      <article><span class="num">02</span><h3>Ambiente marino</h3><p>Durante el Jurásico tardío se desarrollaron ambientes marinos favorables a la preservación de materia orgánica.</p></article>
-      <article><span class="num">03</span><h3>Sistema petrolero</h3><p>La arquitectura geológica permite estudiar generación, almacenamiento, migración y producción de hidrocarburos.</p></article>
-      <article><span class="num">04</span><h3>Escala industrial</h3><p>El desarrollo no convencional convirtió a la región en un núcleo estratégico de la energía argentina.</p></article>
+
+<!-- =========================================================
+     INTRODUCCIÓN
+========================================================= -->
+
+<section class="intro section" id="introduccion">
+
+    <div class="section-heading">
+
+        <span class="eyebrow">01 · CONCEPTO GENERAL</span>
+
+        <h2>
+            ¿Qué hace diferente a un
+            <span>sistema no convencional?</span>
+        </h2>
+
+        <p>
+            En un yacimiento convencional, los hidrocarburos pueden migrar
+            desde la roca madre hacia una roca reservorio donde quedan
+            acumulados. En un sistema no convencional como Vaca Muerta,
+            permanecen dentro de una roca de muy baja permeabilidad.
+        </p>
+
     </div>
-    <div class="map-wrap">
-      <div class="map-label"><small>MAPA INTERACTIVO</small><b>Cuenca Neuquina · esquema educativo</b></div>
-      <div id="map"></div>
-      <div class="map-controls"><button data-view="basin" class="active">Cuenca</button><button data-view="vaca">Vaca Muerta</button><button id="sat">Satélite</button><button id="reset">Restablecer</button></div>
-      <div class="legend"><span><i class="basin-dot"></i> Cuenca · esquema</span><span><i class="vaca-dot"></i> Vaca Muerta · referencia</span><span><i class="point-dot"></i> nodos</span></div>
+
+    <div class="intro-grid">
+
+        <article class="concept-card">
+            <div class="concept-number">01</div>
+            <div class="concept-icon">◆</div>
+            <h3>Encontrar</h3>
+            <p>
+                Identificar una formación geológica con materia orgánica,
+                madurez térmica y características adecuadas.
+            </p>
+        </article>
+
+        <article class="concept-card">
+            <div class="concept-number">02</div>
+            <div class="concept-icon">◇</div>
+            <h3>Perforar</h3>
+            <p>
+                Llegar hasta la formación objetivo y desarrollar un tramo
+                horizontal dentro de la roca.
+            </p>
+        </article>
+
+        <article class="concept-card">
+            <div class="concept-number">03</div>
+            <div class="concept-icon">✦</div>
+            <h3>Estimular</h3>
+            <p>
+                Generar una red de fracturas mediante estimulación hidráulica
+                y mantenerlas abiertas con agente de sostén.
+            </p>
+        </article>
+
+        <article class="concept-card">
+            <div class="concept-number">04</div>
+            <div class="concept-icon">↗</div>
+            <h3>Producir</h3>
+            <p>
+                Permitir que los hidrocarburos recorran las fracturas y lleguen
+                hasta el pozo para ser conducidos a superficie.
+            </p>
+        </article>
+
     </div>
-  </div>
-  <div class="note">⚠ Los polígonos de este mapa son <b>esquemáticos y educativos</b>; no sustituyen cartografía geológica oficial ni límites de concesiones.</div>
+
 </section>
 
-<section class="dark section" id="geologia">
-  <div class="section-head">
-    <div class="kicker">02 · EVOLUCIÓN DEL SUBSUELO</div>
-    <h2>De la sedimentación a la <em>ventana de hidrocarburos.</em></h2>
-    <p>La historia geológica explica por qué una roca puede convertirse en generadora y cómo el enterramiento, la temperatura y el tiempo modifican la materia orgánica.</p>
-  </div>
-  <div class="timeline" id="timeline">
-    <button class="active" data-stage="tri">TRIÁSICO–JURÁSICO</button>
-    <button data-stage="tit">TITHONIANO</button><button data-stage="ber">BERRIASIANO</button>
-    <button data-stage="val">VALANGINIANO</button><button data-stage="hoy">ACTUALIDAD</button>
-  </div>
-  <div class="geo-panel">
-    <div class="geo-scene" id="geoScene">
-      <div class="depth">SUPERFICIE<br><br>500 m<br><br>1.500 m<br><br>2.500 m<br><br>3.500 m</div>
-      <div class="surface">SUPERFICIE · SEDIMENTOS MÁS JÓVENES</div>
-      <div class="strata upper"></div><div class="strata vm"><span>FORMACIÓN VACA MUERTA</span><small>roca generadora / shale</small></div><div class="strata deep"></div>
-      <div class="well"><i></i><b></b></div>
-      <div class="fractures" id="fractures"></div>
-      <div class="hud">CORTE CONCEPTUAL · NO A ESCALA</div>
+
+<!-- =========================================================
+     LA CUENCA
+========================================================= -->
+
+<section class="section section-alt" id="cuenca">
+
+    <div class="section-heading">
+
+        <span class="eyebrow">02 · GEOGRAFÍA</span>
+
+        <h2>
+            La <span>Cuenca Neuquina</span>
+        </h2>
+
+        <p>
+            Una extensa cuenca sedimentaria ubicada principalmente en el
+            oeste de Argentina, con una evolución geológica que permitió
+            generar y almacenar importantes recursos hidrocarburíferos.
+        </p>
+
     </div>
-    <div class="geo-copy"><span class="pill" id="stagePill">TRIÁSICO–JURÁSICO</span><h3 id="stageTitle">Se construye el espacio de la cuenca</h3><p id="stageText">La tectónica y la subsidencia generan espacio de acomodación donde se acumulan sedimentos a lo largo del tiempo geológico.</p>
-      <div class="mini-facts"><div><b id="age">≈ 250–145 Ma</b><span>intervalo de referencia</span></div><div><b id="event">Evolución tectónica</b><span>proceso dominante</span></div></div>
+
+
+    <div class="map-layout">
+
+        <div class="map-info">
+
+            <div class="info-label">
+                UBICACIÓN
+            </div>
+
+            <h3>
+                Un sistema geológico
+                <span>de gran extensión</span>
+            </h3>
+
+            <p>
+                La Cuenca Neuquina se desarrolla principalmente en las
+                provincias de Neuquén, Mendoza, Río Negro y La Pampa.
+            </p>
+
+            <div class="province-list">
+
+                <div>
+                    <span class="province-dot"></span>
+                    Neuquén
+                </div>
+
+                <div>
+                    <span class="province-dot"></span>
+                    Mendoza
+                </div>
+
+                <div>
+                    <span class="province-dot"></span>
+                    Río Negro
+                </div>
+
+                <div>
+                    <span class="province-dot"></span>
+                    La Pampa
+                </div>
+
+            </div>
+
+            <div class="map-note">
+                <strong>Idea clave</strong>
+                <p>
+                    La importancia de una cuenca no depende solamente de
+                    cuánto hidrocarburo contiene, sino también de sus
+                    características geológicas y de la tecnología disponible
+                    para producirlo.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="map-wrapper">
+
+            <div id="map"></div>
+
+            <div class="map-controls">
+                <button id="mapSatellite">Satélite</button>
+                <button id="mapNormal" class="active">Mapa</button>
+            </div>
+
+        </div>
+
     </div>
-  </div>
+
 </section>
 
-<section class="section" id="vaca">
-  <div class="section-head"><div class="kicker">03 · FORMACIÓN VACA MUERTA</div><h2>Importante: Vaca Muerta <em>no es un yacimiento.</em></h2><p>Es una formación sedimentaria depositada en un ambiente marino jurásico dentro de la Cuenca Neuquina. Su relevancia actual se relaciona con su potencial como recurso no convencional.</p></div>
-  <div class="system">
-    <div class="system-diagram">
-      <div class="flow"><span>Materia orgánica</span><i>→</i><span>Enterramiento</span><i>→</i><span>Madurez térmica</span><i>→</i><span>Hidrocarburos</span></div>
-      <div class="rock"><div class="organic">● ● ● ● ● ● ●</div><strong>VACA MUERTA</strong><small>Roca fina · rica en materia orgánica · muy baja permeabilidad</small><div class="pores">••••••••••••••••••••</div></div>
-      <div class="callouts"><span><b>TOC</b>Materia orgánica</span><span><b>Ro</b>Madurez</span><span><b>k</b>Permeabilidad</span><span><b>φ</b>Porosidad</span></div>
+
+<!-- =========================================================
+     TIEMPO GEOLOGICO
+========================================================= -->
+
+<section class="section" id="geologia">
+
+    <div class="section-heading">
+
+        <span class="eyebrow">03 · GEOLOGÍA</span>
+
+        <h2>
+            Tiempo <span>Geológico</span>
+        </h2>
+
+        <p>
+            Las rocas de la Cuenca Neuquina son el resultado de millones de
+            años de sedimentación, enterramiento, deformación y transformación.
+        </p>
+
     </div>
-    <div class="system-copy">
-      <article><b>01 · Generación</b><p>La materia orgánica preservada puede transformarse térmicamente y generar hidrocarburos durante el enterramiento.</p></article>
-      <article><b>02 · Almacenamiento</b><p>Los hidrocarburos permanecen en una matriz de muy baja permeabilidad y en sistemas de poros y microfracturas.</p></article>
-      <article><b>03 · Producción</b><p>El pozo horizontal y la estimulación hidráulica aumentan la superficie efectiva y la conectividad hacia el pozo.</p></article>
+
+
+    <div class="geology-layout">
+
+        <div class="stratigraphy">
+
+            <div class="layer layer-1" data-layer="basamento">
+                <span>Basamento</span>
+                <small>Rocas antiguas</small>
+            </div>
+
+            <div class="layer layer-2" data-layer="cuyo">
+                <span>Grupo Cuyo</span>
+                <small>Sedimentación</small>
+            </div>
+
+            <div class="layer layer-3" data-layer="tordillo">
+                <span>Tordillo</span>
+                <small>Areniscas</small>
+            </div>
+
+            <div class="layer layer-4 active" data-layer="vacamuerta">
+                <span>Vaca Muerta</span>
+                <small>Roca generadora</small>
+            </div>
+
+            <div class="layer layer-5" data-layer="modernas">
+                <span>Unidades superiores</span>
+                <small>Depósitos más jóvenes</small>
+            </div>
+
+        </div>
+
+
+        <div class="layer-information" id="layerInformation">
+
+            <span class="info-label">FORMACIÓN SELECCIONADA</span>
+
+            <h3>Vaca Muerta</h3>
+
+            <p>
+                Formación sedimentaria rica en materia orgánica, considerada
+                la principal roca generadora y reservorio no convencional
+                de la Cuenca Neuquina.
+            </p>
+
+            <div class="property-grid">
+
+                <div>
+                    <small>TIPO</small>
+                    <strong>Shale</strong>
+                </div>
+
+                <div>
+                    <small>FUNCIÓN</small>
+                    <strong>Generadora / reservorio</strong>
+                </div>
+
+                <div>
+                    <small>PROPIEDAD CLAVE</small>
+                    <strong>Baja permeabilidad</strong>
+                </div>
+
+                <div>
+                    <small>ORIGEN</small>
+                    <strong>Sedimentario marino</strong>
+                </div>
+
+            </div>
+
+        </div>
+
     </div>
-  </div>
+
+
+    <div class="timeline">
+
+        <div class="timeline-line"></div>
+
+        <div class="timeline-item">
+            <span class="timeline-dot"></span>
+            <strong>Depósito</strong>
+            <p>Acumulación de sedimentos.</p>
+        </div>
+
+        <div class="timeline-item">
+            <span class="timeline-dot"></span>
+            <strong>Enterramiento</strong>
+            <p>Aumento de presión y temperatura.</p>
+        </div>
+
+        <div class="timeline-item">
+            <span class="timeline-dot"></span>
+            <strong>Maduración</strong>
+            <p>Transformación de materia orgánica.</p>
+        </div>
+
+        <div class="timeline-item">
+            <span class="timeline-dot"></span>
+            <strong>Generación</strong>
+            <p>Formación de petróleo y gas.</p>
+        </div>
+
+        <div class="timeline-item">
+            <span class="timeline-dot"></span>
+            <strong>Producción</strong>
+            <p>Aplicación de tecnología moderna.</p>
+        </div>
+
+    </div>
+
 </section>
 
-<section class="dark section" id="pozo">
-  <div class="section-head"><div class="kicker">04 · INGENIERÍA DEL POZO</div><h2>¿Por qué perforar <em>horizontalmente?</em></h2><p>En una formación de muy baja permeabilidad, aumentar el contacto con la roca objetivo es fundamental. El desarrollo moderno combina trayectoria direccional, completación y estimulación.</p></div>
-  <div class="process">
-    <div class="process-nav" id="processNav">
-      <button class="active" data-step="0"><b>01</b>Perforación vertical</button>
-      <button data-step="1"><b>02</b>Construcción de curva</button>
-      <button data-step="2"><b>03</b>Lateral horizontal</button>
-      <button data-step="3"><b>04</b>Completación</button>
-      <button data-step="4"><b>05</b>Estimulación</button>
-      <button data-step="5"><b>06</b>Producción</button>
+
+<!-- =========================================================
+     SISTEMA PETROLERO
+========================================================= -->
+
+<section class="section section-dark" id="sistema">
+
+    <div class="section-heading light">
+
+        <span class="eyebrow">04 · SISTEMA PETROLERO</span>
+
+        <h2>
+            Convencional vs.
+            <span>No Convencional</span>
+        </h2>
+
+        <p>
+            La diferencia fundamental está en cómo se encuentran almacenados
+            los hidrocarburos y en la capacidad de la roca para permitir su
+            movimiento.
+        </p>
+
     </div>
-    <div class="well-card">
-      <div class="well-model"><span class="surface-line"></span><span class="well-vertical"></span><span class="well-curve"></span><span class="well-horizontal" id="wellHorizontal"></span><div class="vm-band"></div><div class="fracs" id="fracs"></div><small>FORMACIÓN OBJETIVO</small></div>
-      <div class="process-info"><span id="processTag">ETAPA 01</span><h3 id="processTitle">Perforación vertical</h3><p id="processText"></p><div class="objective" id="processObjective"></div></div>
+
+
+    <div class="comparison">
+
+        <div class="system-card conventional">
+
+            <div class="system-header">
+                <span class="system-number">01</span>
+                <h3>Sistema Convencional</h3>
+            </div>
+
+            <div class="reservoir-diagram conventional-diagram">
+
+                <div class="source-rock">Roca madre</div>
+
+                <div class="migration-arrow">↑</div>
+
+                <div class="reservoir-rock">
+                    <span>Reservorio</span>
+                    <small>Porosidad + permeabilidad</small>
+                </div>
+
+                <div class="seal-rock">Sello</div>
+
+                <div class="trap-shape"></div>
+
+            </div>
+
+            <p>
+                Los hidrocarburos generados en la roca madre pueden migrar
+                hacia un reservorio con mayor permeabilidad y acumularse
+                debajo de una roca sello.
+            </p>
+
+            <ul>
+                <li>Mayor permeabilidad del reservorio</li>
+                <li>Migración del hidrocarburo</li>
+                <li>Trampa geológica</li>
+                <li>Producción mediante pozo convencional</li>
+            </ul>
+
+        </div>
+
+
+        <div class="system-card unconventional">
+
+            <div class="system-header">
+                <span class="system-number">02</span>
+                <h3>Sistema No Convencional</h3>
+            </div>
+
+            <div class="reservoir-diagram shale-diagram">
+
+                <div class="shale-rock">
+
+                    <span class="shale-label">VACA MUERTA</span>
+
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                    <i></i>
+
+                    <div class="nano-label">
+                        Nanoporos + microfracturas
+                    </div>
+
+                </div>
+
+            </div>
+
+            <p>
+                En un sistema shale, la roca que generó los hidrocarburos
+                también puede actuar como reservorio. La muy baja permeabilidad
+                dificulta el movimiento natural de los fluidos.
+            </p>
+
+            <ul>
+                <li>Ultra baja permeabilidad</li>
+                <li>Hidrocarburos retenidos en la formación</li>
+                <li>Pozo horizontal</li>
+                <li>Estimulación hidráulica</li>
+            </ul>
+
+        </div>
+
     </div>
-  </div>
-</section>
 
-<section class="section simulator" id="simulador">
-  <div class="section-head"><div class="kicker">05 · LABORATORIO VIRTUAL</div><h2>Jugá con las variables y <em>entendé el concepto.</em></h2><p>Este modelo es didáctico: no calcula una producción real ni reemplaza un modelo de reservorio o simulación de ingeniería.</p></div>
-  <div class="sim-grid">
-    <div class="controls">
-      <label>Profundidad objetivo <output id="depthOut">2.500 m</output><input id="depth" type="range" min="1800" max="3800" value="2500" step="50"></label>
-      <label>Longitud lateral <output id="lengthOut">2.500 m</output><input id="length" type="range" min="500" max="3500" value="2500" step="100"></label>
-      <label>Etapas de fractura <output id="stageOut">30</output><input id="stages" type="range" min="5" max="40" value="30"></label>
-      <div class="score"><div><span>ÍNDICE CONCEPTUAL DE CONTACTO</span><b id="score">—</b></div><div class="bar"><i id="scoreBar"></i></div><p id="simText"></p></div>
+
+    <div class="key-message">
+
+        <div class="key-icon">!</div>
+
+        <div>
+            <strong>Concepto fundamental</strong>
+            <p>
+                En un sistema no convencional no alcanza con perforar hasta
+                encontrar hidrocarburos: es necesario aumentar artificialmente
+                la superficie de contacto entre el pozo y la roca productiva.
+            </p>
+        </div>
+
     </div>
-    <div class="sim-visual"><div class="sim-depth"></div><div class="sim-well"></div><div id="simFracs"></div><span class="sim-label">POZO HORIZONTAL</span><span class="sim-label vm-label">VACA MUERTA</span></div>
-  </div>
+
 </section>
 
-<section class="section metrics" id="datos">
-  <div class="section-head"><div class="kicker">06 · INDICADORES 2026</div><h2>La escala del desarrollo, <em>en números.</em></h2><p>Datos recientes de fuentes oficiales argentinas. Las cifras se muestran con su unidad original y fecha de referencia.</p></div>
-  <div class="metric-grid">
-    <article><span>RECURSOS DE PETRÓLEO</span><b>30.170</b><strong>MMbbl</strong><small>Recursos remanentes técnicamente recuperables estimados para Vaca Muerta.</small></article>
-    <article><span>PETRÓLEO · JUL 2026</span><b>643,1</b><strong>kbbl/d</strong><small>Producción de petróleo de Vaca Muerta; +26,4% interanual.</small></article>
-    <article><span>GAS · JUL 2026</span><b>96,5</b><strong>MMm³/d</strong><small>Producción de gas natural de Vaca Muerta; +5,9% interanual.</small></article>
-    <article><span>PRODUCCIÓN NACIONAL</span><b>916,2</b><strong>kbbl/d</strong><small>Producción argentina de petróleo en julio de 2026.</small></article>
-  </div>
-  <div class="sources">
-    <b>Fuentes principales</b>
-    <a href="https://www.argentina.gob.ar/noticias/vaca-muerta-aumento-en-un-89-sus-recursos-de-petroleo-respecto-de-las-ultimas-estimaciones" target="_blank">Secretaría de Energía · Recursos 2026 ↗</a>
-    <a href="https://www.argentina.gob.ar/noticias/la-produccion-de-petroleo-registro-otro-mes-de-crecimiento-en-julio" target="_blank">Secretaría de Energía · Producción julio 2026 ↗</a>
-    <a href="https://www.argentina.gob.ar/economia/energia/vaca-muerta/historia" target="_blank">Argentina.gob.ar · Historia de Vaca Muerta ↗</a>
-  </div>
+
+<!-- =========================================================
+     COMO FUNCIONA EL NO CONVENCIONAL
+========================================================= -->
+
+<section class="section" id="funcionamiento">
+
+    <div class="section-heading">
+
+        <span class="eyebrow">05 · NO CONVENCIONAL</span>
+
+        <h2>
+            ¿Cómo funciona un sistema
+            <span>no convencional?</span>
+        </h2>
+
+        <p>
+            El desarrollo de shale combina geología, perforación, completación
+            y estimulación hidráulica.
+        </p>
+
+    </div>
+
+
+    <div class="process-grid">
+
+        <article class="process-card">
+
+            <div class="process-number">01</div>
+
+            <div class="process-icon">◉</div>
+
+            <h3>Atrapamiento</h3>
+
+            <p>
+                Durante millones de años, la materia orgánica quedó enterrada
+                y sometida a presión y temperatura. La maduración generó
+                petróleo y gas que quedaron alojados en la roca.
+            </p>
+
+            <span class="process-tag">
+                NANOPOROS
+            </span>
+
+        </article>
+
+
+        <article class="process-card">
+
+            <div class="process-number">02</div>
+
+            <div class="process-icon">↓</div>
+
+            <h3>Navegación horizontal</h3>
+
+            <p>
+                El pozo comienza verticalmente y luego cambia de dirección
+                hasta desarrollar un tramo horizontal dentro de la formación
+                objetivo.
+            </p>
+
+            <span class="process-tag">
+                POZO HORIZONTAL
+            </span>
+
+        </article>
+
+
+        <article class="process-card">
+
+            <div class="process-number">03</div>
+
+            <div class="process-icon">✦</div>
+
+            <h3>Fracturación hidráulica</h3>
+
+            <p>
+                Se inyecta un fluido a alta presión para generar fracturas
+                controladas. El agente de sostén ayuda a mantenerlas abiertas.
+            </p>
+
+            <span class="process-tag">
+                FRACKING
+            </span>
+
+        </article>
+
+
+        <article class="process-card">
+
+            <div class="process-number">04</div>
+
+            <div class="process-icon">↑</div>
+
+            <h3>Flujo y producción</h3>
+
+            <p>
+                Los hidrocarburos atraviesan la red de fracturas hacia el pozo
+                y luego son conducidos hasta superficie para su tratamiento.
+            </p>
+
+            <span class="process-tag">
+                PRODUCCIÓN
+            </span>
+
+        </article>
+
+    </div>
+
 </section>
 
-<section class="section glossary" id="quiz">
-  <div class="section-head"><div class="kicker">07 · EVALUACIÓN</div><h2>¿Cuánto sabés de la <em>Cuenca Neuquina?</em></h2><p>Respondé y comprobá si dominás los conceptos principales.</p></div>
-  <div class="quiz">
-    <div class="quiz-top"><span id="qNumber">PREGUNTA 01 / 08</span><b id="scoreQuiz">0 pts</b></div>
-    <h3 id="question"></h3><div id="answers"></div><div class="quiz-bottom"><span id="result"></span><button id="next" disabled>Siguiente →</button></div>
-  </div>
+
+<!-- =========================================================
+     VACA MUERTA
+========================================================= -->
+
+<section class="section section-alt" id="vaca-muerta">
+
+    <div class="section-heading">
+
+        <span class="eyebrow">06 · FORMACIÓN ESTRELLA</span>
+
+        <h2>
+            <span>Vaca Muerta</span>
+        </h2>
+
+        <p>
+            Una formación sedimentaria de gran importancia para el desarrollo
+            de recursos no convencionales en la Argentina.
+        </p>
+
+    </div>
+
+
+    <div class="vaca-grid">
+
+        <div class="vaca-main-card">
+
+            <div class="formation-badge">
+                FORMACIÓN VACA MUERTA
+            </div>
+
+            <h3>
+                La roca donde comienza
+                <span>el desafío tecnológico</span>
+            </h3>
+
+            <p>
+                Vaca Muerta es una formación de origen marino constituida
+                principalmente por lutitas y margas ricas en materia orgánica.
+                Su baja permeabilidad es una de las razones por las que se
+                requiere una combinación de perforación horizontal y
+                estimulación hidráulica.
+            </p>
+
+            <div class="vaca-properties">
+
+                <div>
+                    <strong>Rica en materia orgánica</strong>
+                    <span>TOC y kerógeno</span>
+                </div>
+
+                <div>
+                    <strong>Baja permeabilidad</strong>
+                    <span>Movimiento limitado de fluidos</span>
+                </div>
+
+                <div>
+                    <strong>Gran espesor</strong>
+                    <span>Variable según sector</span>
+                </div>
+
+                <div>
+                    <strong>Madurez térmica</strong>
+                    <span>Ventanas de petróleo y gas</span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="fluid-window">
+
+            <span class="info-label">VENTANAS DE FLUIDOS</span>
+
+            <h3>Madurez térmica</h3>
+
+            <div class="window-bar">
+
+                <div class="window-zone gas">
+                    <span>GAS</span>
+                </div>
+
+                <div class="window-zone oil">
+                    <span>PETRÓLEO</span>
+                </div>
+
+                <div class="window-zone immature">
+                    <span>INMADURA</span>
+                </div>
+
+            </div>
+
+            <p>
+                La temperatura y el tiempo geológico influyen en la
+                transformación de la materia orgánica y en el tipo de
+                hidrocarburo generado.
+            </p>
+
+        </div>
+
+    </div>
+
 </section>
 
-<section class="section final">
-  <div class="final-card"><div class="kicker">CIERRE</div><h2>La geología explica el recurso.<br><em>La ingeniería lo convierte en energía.</em></h2><p>Una mirada integrada a la Cuenca Neuquina permite conectar tiempo geológico, propiedades de roca, perforación, completación, estimulación y producción.</p><a class="btn primary" href="#inicio">Volver al inicio ↑</a></div>
+
+<!-- =========================================================
+     DESARROLLO DEL POZO
+========================================================= -->
+
+<section class="section section-dark" id="pozo">
+
+    <div class="section-heading light">
+
+        <span class="eyebrow">07 · INGENIERÍA</span>
+
+        <h2>
+            Desarrollo de un
+            <span>pozo no convencional</span>
+        </h2>
+
+        <p>
+            La ingeniería transforma una formación de baja permeabilidad
+            en un sistema capaz de entregar hidrocarburos a superficie.
+        </p>
+
+    </div>
+
+
+    <div class="well-section">
+
+        <div class="well-animation">
+
+            <div class="surface">
+                <span>SUPERFICIE</span>
+                <div class="wellhead"></div>
+            </div>
+
+            <div class="subsurface">
+
+                <div class="formation formation-a">
+                    <span>UNIDADES SUPERIORES</span>
+                </div>
+
+                <div class="formation formation-b">
+                    <span>FORMACIÓN OBJETIVO</span>
+                </div>
+
+                <div class="well-path">
+
+                    <div class="vertical-well"></div>
+
+                    <div class="curve-well"></div>
+
+                    <div class="horizontal-well"></div>
+
+                </div>
+
+                <div class="fracture fracture-1"></div>
+                <div class="fracture fracture-2"></div>
+                <div class="fracture fracture-3"></div>
+                <div class="fracture fracture-4"></div>
+                <div class="fracture fracture-5"></div>
+                <div class="fracture fracture-6"></div>
+
+            </div>
+
+        </div>
+
+
+        <div class="well-controls">
+
+            <button class="well-step active" data-step="1">
+                <span>01</span>
+                Perforación vertical
+            </button>
+
+            <button class="well-step" data-step="2">
+                <span>02</span>
+                Desviación
+            </button>
+
+            <button class="well-step" data-step="3">
+                <span>03</span>
+                Tramo horizontal
+            </button>
+
+            <button class="well-step" data-step="4">
+                <span>04</span>
+                Completación
+            </button>
+
+            <button class="well-step" data-step="5">
+                <span>05</span>
+                Fracturación
+            </button>
+
+            <button class="well-step" data-step="6">
+                <span>06</span>
+                Producción
+            </button>
+
+        </div>
+
+
+        <div class="well-description" id="wellDescription">
+
+            <span>ETAPA 01</span>
+
+            <h3>Perforación vertical</h3>
+
+            <p>
+                El pozo comienza descendiendo verticalmente desde superficie
+                hasta aproximarse a la formación objetivo.
+            </p>
+
+        </div>
+
+    </div>
+
 </section>
+
+
+<!-- =========================================================
+     FRACTURACION
+========================================================= -->
+
+<section class="section" id="fracking">
+
+    <div class="section-heading">
+
+        <span class="eyebrow">08 · ESTIMULACIÓN</span>
+
+        <h2>
+            Fracturación
+            <span>hidráulica</span>
+        </h2>
+
+        <p>
+            La estimulación hidráulica permite crear conductos artificiales
+            dentro de la roca para mejorar la comunicación entre la formación
+            y el pozo.
+        </p>
+
+    </div>
+
+
+    <div class="fracking-demo">
+
+        <div class="fracking-rock">
+
+            <div class="fracking-well"></div>
+
+            <div class="frac-line f1"></div>
+            <div class="frac-line f2"></div>
+            <div class="frac-line f3"></div>
+            <div class="frac-line f4"></div>
+            <div class="frac-line f5"></div>
+            <div class="frac-line f6"></div>
+
+            <div class="proppant p1"></div>
+            <div class="proppant p2"></div>
+            <div class="proppant p3"></div>
+            <div class="proppant p4"></div>
+            <div class="proppant p5"></div>
+            <div class="proppant p6"></div>
+
+        </div>
+
+        <div class="fracking-panel">
+
+            <span class="info-label">SIMULACIÓN DIDÁCTICA</span>
+
+            <h3>
+                Crear caminos dentro
+                <span>de la roca</span>
+            </h3>
+
+            <p>
+                La presión del fluido genera fracturas. El agente de sostén,
+                principalmente arena, queda dentro de ellas y contribuye a
+                mantenerlas abiertas una vez que disminuye la presión.
+            </p>
+
+            <button class="btn btn-primary" id="fractureBtn">
+                Activar fracturación
+                <span>✦</span>
+            </button>
+
+            <div class="fracking-status" id="frackingStatus">
+                Sistema en espera
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     DATOS
+========================================================= -->
+
+<section class="section section-alt" id="datos">
+
+    <div class="section-heading">
+
+        <span class="eyebrow">09 · DATOS Y RECURSOS</span>
+
+        <h2>
+            La Cuenca en
+            <span>números</span>
+        </h2>
+
+        <p>
+            Indicadores y conceptos que permiten dimensionar la importancia
+            de los recursos no convencionales.
+        </p>
+
+    </div>
+
+
+    <div class="numbers-grid">
+
+        <div class="number-card">
+            <span class="number-icon">◈</span>
+            <strong>4</strong>
+            <h3>Provincias</h3>
+            <p>
+                La Cuenca Neuquina abarca principalmente sectores de Neuquén,
+                Mendoza, Río Negro y La Pampa.
+            </p>
+        </div>
+
+        <div class="number-card">
+            <span class="number-icon">⌁</span>
+            <strong>km</strong>
+            <h3>Laterales extensos</h3>
+            <p>
+                La perforación horizontal permite aumentar el contacto con
+                la formación productiva.
+            </p>
+        </div>
+
+        <div class="number-card">
+            <span class="number-icon">◆</span>
+            <strong>Shale</strong>
+            <h3>Baja permeabilidad</h3>
+            <p>
+                Una de las características que diferencia estos reservorios
+                de los sistemas convencionales.
+            </p>
+        </div>
+
+        <div class="number-card">
+            <span class="number-icon">⚙</span>
+            <strong>24/7</strong>
+            <h3>Operación industrial</h3>
+            <p>
+                El desarrollo requiere planificación, monitoreo y control
+                durante todo el ciclo productivo.
+            </p>
+        </div>
+
+    </div>
+
+
+    <div class="resource-box">
+
+        <div>
+            <span class="info-label">RECURSOS PARA PROFUNDIZAR</span>
+
+            <h3>
+                Geología + Ingeniería +
+                <span>Datos</span>
+            </h3>
+        </div>
+
+        <div class="resource-tags">
+            <span>IAPG</span>
+            <span>Secretaría de Energía</span>
+            <span>Provincia del Neuquén</span>
+            <span>EIA</span>
+            <span>YPF</span>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     SEGURIDAD Y AMBIENTE
+========================================================= -->
+
+<section class="section" id="ambiente">
+
+    <div class="section-heading">
+
+        <span class="eyebrow">10 · SEGURIDAD Y AMBIENTE</span>
+
+        <h2>
+            Desarrollo con
+            <span>control operacional</span>
+        </h2>
+
+        <p>
+            El desarrollo de hidrocarburos requiere controles técnicos,
+            ambientales y de seguridad durante las distintas etapas de
+            la operación.
+        </p>
+
+    </div>
+
+
+    <div class="safety-grid">
+
+        <article class="safety-card">
+            <div class="safety-icon">▣</div>
+            <h3>Integridad del pozo</h3>
+            <p>
+                Casing, cementación, monitoreo de presión y control de
+                barreras forman parte de la gestión de integridad.
+            </p>
+        </article>
+
+        <article class="safety-card">
+            <div class="safety-icon">≈</div>
+            <h3>Gestión del agua</h3>
+            <p>
+                La operación requiere planificación del abastecimiento,
+                tratamiento, reutilización y disposición de fluidos.
+            </p>
+        </article>
+
+        <article class="safety-card">
+            <div class="safety-icon">⌁</div>
+            <h3>Monitoreo</h3>
+            <p>
+                Se utilizan mediciones y controles para verificar el
+                comportamiento del pozo y las condiciones de operación.
+            </p>
+        </article>
+
+        <article class="safety-card">
+            <div class="safety-icon">✓</div>
+            <h3>Buenas prácticas</h3>
+            <p>
+                La planificación, capacitación, procedimientos y control
+                de riesgos son fundamentales en las operaciones.
+            </p>
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     QUIZ
+========================================================= -->
+
+<section class="section section-dark" id="quiz">
+
+    <div class="section-heading light">
+
+        <span class="eyebrow">11 · INTERACTIVO</span>
+
+        <h2>
+            Poné a prueba tus
+            <span>conocimientos</span>
+        </h2>
+
+        <p>
+            Ocho preguntas sobre geología, sistemas petroleros y desarrollo
+            de pozos no convencionales.
+        </p>
+
+    </div>
+
+
+    <div class="quiz-container">
+
+        <div class="quiz-top">
+
+            <span id="quizProgress">
+                Pregunta 1 de 8
+            </span>
+
+            <div class="quiz-progress">
+                <div id="quizProgressBar"></div>
+            </div>
+
+            <strong id="quizScore">
+                0 puntos
+            </strong>
+
+        </div>
+
+
+        <div id="quizContent">
+
+            <h3 id="questionText">
+                ¿Qué caracteriza principalmente a un reservorio shale?
+            </h3>
+
+            <div id="answers"></div>
+
+            <div id="quizFeedback"></div>
+
+            <button id="nextQuestion" class="btn btn-primary quiz-next">
+                Siguiente →
+            </button>
+
+        </div>
+
+
+        <div id="quizResult" class="quiz-result hidden">
+
+            <div class="result-circle">
+                <strong id="finalScore">0/8</strong>
+            </div>
+
+            <h3 id="resultTitle">
+                Resultado
+            </h3>
+
+            <p id="resultText"></p>
+
+            <button id="restartQuiz" class="btn btn-primary">
+                Repetir quiz
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     GLOSARIO
+========================================================= -->
+
+<section class="section section-alt" id="glosario">
+
+    <div class="section-heading">
+
+        <span class="eyebrow">12 · GLOSARIO</span>
+
+        <h2>
+            Conceptos
+            <span>clave</span>
+        </h2>
+
+        <p>
+            Buscá rápidamente los principales términos utilizados durante
+            el recorrido.
+        </p>
+
+    </div>
+
+
+    <div class="glossary-search">
+
+        <span>⌕</span>
+
+        <input
+            type="text"
+            id="glossarySearch"
+            placeholder="Buscar término..."
+        >
+
+    </div>
+
+
+    <div class="glossary-grid" id="glossaryGrid">
+
+        <article class="term-card">
+            <h3>Permeabilidad</h3>
+            <p>
+                Capacidad de una roca para permitir el movimiento de fluidos
+                a través de sus poros conectados.
+            </p>
+        </article>
+
+        <article class="term-card">
+            <h3>Porosidad</h3>
+            <p>
+                Proporción del volumen de espacios vacíos de una roca respecto
+                de su volumen total.
+            </p>
+        </article>
+
+        <article class="term-card">
+            <h3>TOC</h3>
+            <p>
+                Carbono Orgánico Total. Indicador utilizado para evaluar
+                la cantidad de materia orgánica presente en una roca.
+            </p>
+        </article>
+
+        <article class="term-card">
+            <h3>Kerógeno</h3>
+            <p>
+                Materia orgánica insoluble presente en rocas sedimentarias
+                que puede generar hidrocarburos durante su maduración.
+            </p>
+        </article>
+
+        <article class="term-card">
+            <h3>Shale</h3>
+            <p>
+                Roca sedimentaria de grano fino y muy baja permeabilidad.
+            </p>
+        </article>
+
+        <article class="term-card">
+            <h3>Fracking</h3>
+            <p>
+                Nombre común de la estimulación mediante fracturación hidráulica.
+            </p>
+        </article>
+
+        <article class="term-card">
+            <h3>Proppant</h3>
+            <p>
+                Agente de sostén, generalmente arena, utilizado para ayudar
+                a mantener abiertas las fracturas creadas.
+            </p>
+        </article>
+
+        <article class="term-card">
+            <h3>Flowback</h3>
+            <p>
+                Flujo inicial de fluidos que retorna a superficie luego
+                de determinadas operaciones de estimulación.
+            </p>
+        </article>
+
+        <article class="term-card">
+            <h3>Roca madre</h3>
+            <p>
+                Formación que contiene materia orgánica capaz de generar
+                hidrocarburos bajo determinadas condiciones.
+            </p>
+        </article>
+
+        <article class="term-card">
+            <h3>Roca reservorio</h3>
+            <p>
+                Roca capaz de almacenar y permitir el movimiento de
+                hidrocarburos en sus espacios porosos.
+            </p>
+        </article>
+
+        <article class="term-card">
+            <h3>Roca sello</h3>
+            <p>
+                Roca de muy baja permeabilidad que limita la migración
+                de hidrocarburos.
+            </p>
+        </article>
+
+        <article class="term-card">
+            <h3>Pozo horizontal</h3>
+            <p>
+                Pozo que desarrolla una sección de alta inclinación o
+                aproximadamente horizontal dentro de la formación objetivo.
+            </p>
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     EQUIPO Y FUENTES
+========================================================= -->
+
+<section class="section" id="equipo">
+
+    <div class="section-heading">
+
+        <span class="eyebrow">13 · PROYECTO</span>
+
+        <h2>
+            Equipo y
+            <span>fuentes</span>
+        </h2>
+
+        <p>
+            Proyecto académico desarrollado para estudiar la Cuenca Neuquina,
+            Vaca Muerta y los métodos modernos de desarrollo no convencional.
+        </p>
+
+    </div>
+
+
+    <div class="team-box">
+
+        <div class="team-title">
+            <span class="info-label">EQUIPO DE TRABAJO</span>
+
+            <h3>
+                Proyecto
+                <span>Cuenca Neuquina</span>
+            </h3>
+        </div>
+
+        <div class="team-members">
+
+            <div class="member">
+                <div class="member-avatar">DG</div>
+                <strong>Integrante 1</strong>
+                <span>Petróleo y Gas</span>
+            </div>
+
+            <div class="member">
+                <div class="member-avatar">DM</div>
+                <strong>Integrante 2</strong>
+                <span>Petróleo y Gas</span>
+            </div>
+
+            <div class="member">
+                <div class="member-avatar">AO</div>
+                <strong>Integrante 3</strong>
+                <span>Petróleo y Gas</span>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="sources">
+
+        <div class="source-item">
+            <strong>IAPG</strong>
+            <span>Instituto Argentino del Petróleo y del Gas</span>
+        </div>
+
+        <div class="source-item">
+            <strong>Secretaría de Energía</strong>
+            <span>Información energética oficial</span>
+        </div>
+
+        <div class="source-item">
+            <strong>Provincia del Neuquén</strong>
+            <span>Información provincial sobre hidrocarburos</span>
+        </div>
+
+        <div class="source-item">
+            <strong>EIA</strong>
+            <span>U.S. Energy Information Administration</span>
+        </div>
+
+        <div class="source-item">
+            <strong>YPF</strong>
+            <span>Información corporativa y energética</span>
+        </div>
+
+    </div>
+
+</section>
+
+
 </main>
 
-<footer><div><b>CUENCA NEUQUINA</b><span>Proyecto académico · Petróleo y Gas</span></div><div>© <span id="year"></span> · David Mauna & equipo</div></footer>
 
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer class="footer">
+
+    <div class="footer-main">
+
+        <div class="footer-brand">
+
+            <div class="logo">
+                <span class="logo-mark">CN</span>
+                <span>
+                    <strong>CUENCA</strong>
+                    <small>NEUQUINA</small>
+                </span>
+            </div>
+
+            <p>
+                Proyecto académico sobre geología y desarrollo
+                de recursos no convencionales.
+            </p>
+
+        </div>
+
+        <div class="footer-column">
+
+            <h4>NAVEGACIÓN</h4>
+
+            <a href="#cuenca">La Cuenca</a>
+            <a href="#geologia">Geología</a>
+            <a href="#sistema">Sistema Petrolero</a>
+            <a href="#pozo">Desarrollo del Pozo</a>
+
+        </div>
+
+        <div class="footer-column">
+
+            <h4>INTERACTIVO</h4>
+
+            <a href="#fracking">Fracturación</a>
+            <a href="#quiz">Quiz</a>
+            <a href="#glosario">Glosario</a>
+            <a href="#datos">Datos</a>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <span>
+            © 2026 · Cuenca Neuquina · Proyecto académico
+        </span>
+
+        <button id="backTop">
+            ↑ Volver arriba
+        </button>
+
+    </div>
+
+</footer>
+
+
+<!-- =========================================================
+     PRESENTATION MODE
+========================================================= -->
+
+<div id="presentationOverlay" class="presentation-overlay">
+
+    <button id="closePresentation" class="close-presentation">
+        ✕
+    </button>
+
+    <div class="presentation-content">
+
+        <span class="eyebrow">
+            MODO PRESENTACIÓN
+        </span>
+
+        <h2 id="presentationTitle">
+            Cuenca Neuquina
+        </h2>
+
+        <p id="presentationText">
+            Del origen geológico al desarrollo de un pozo no convencional.
+        </p>
+
+        <div class="presentation-controls">
+
+            <button id="presentationPrev">
+                ←
+            </button>
+
+            <span id="presentationCounter">
+                1 / 8
+            </span>
+
+            <button id="presentationNext">
+                →
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- Leaflet -->
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<!-- JavaScript -->
 <script src="script.js"></script>
+
 </body>
 </html>
